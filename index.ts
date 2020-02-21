@@ -29,6 +29,7 @@ export function compressWithRatio(file: File, settings: Settings) {
  * @param file A single file obtained by input[type=file]
  */
 export function readFile(file: File) {
+  // @ts-ignore
   return new Promise<string>((resolve, reject) => {
     const fileReader = new FileReader();
     fileReader.onload = function () {
@@ -77,6 +78,7 @@ export function compress(img: HTMLImageElement, width: number, height: number, q
  * @param src image url
  */
 export function createImage(src: string) {
+   // @ts-ignore
   return new Promise<HTMLImageElement>((resolve, reject) => {
     const img = document.createElement('img');
     img.onload = () => { resolve(img) };

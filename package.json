@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "read & compress image",
   "main": "index.js",
+  "module": "index.esm.js",
   "scripts": {
-    "build": "tsc",
+    "build": "gulp es6 & gulp es5",
     "test": "jest"
   },
   "repository": {
@@ -21,6 +22,9 @@
   "sideEffects": false,
   "typings": "./index.d.ts",
   "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "jquery": "^3.4.1",
     "typescript": "^3.7.5"
   }
