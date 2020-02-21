@@ -1,0 +1,27 @@
+{
+  "name": "@joyfulljs/imagemin",
+  "version": "1.0.0",
+  "description": "read & compress image",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joyfulljs/imagemin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joyfulljs/imagemin/issues"
+  },
+  "homepage": "https://github.com/joyfulljs/imagemin#readme",
+  "sideEffects": false,
+  "typings": "./index.d.ts",
+  "devDependencies": {
+    "jquery": "^3.4.1",
+    "typescript": "^3.7.5"
+  }
+}
