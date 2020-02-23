@@ -5,23 +5,21 @@
  * @param file A single File obtained by input[type=file]
  * @param settings Settings { maxWidth: number, maxHeight: number, quality: number }
  */
-export function compressWithRatio(file: File, settings: Settings) {
-  return readFile(file).then(createImage).then(img => {
-    const MAX_WIDTH = settings.maxWidth,
-      MAX_HEIGHT = settings.maxHeight;
-    let w = img.width, h = img.height;
-    // 调整宽度
-    if (MAX_WIDTH > 0 && w > MAX_WIDTH) {
-      h = MAX_WIDTH / w * h;
-      w = MAX_WIDTH;
-    }
-    // 调整高度
-    if (MAX_HEIGHT > 0 && h > MAX_HEIGHT) {
-      w = MAX_HEIGHT / h * w;
-      h = MAX_HEIGHT;
-    }
-    return compress(img, w, h, settings.quality);
-  })
+export function compressWithRatio(img: HTMLImageElement, settings: Settings) {
+  const MAX_WIDTH = settings.maxWidth,
+    MAX_HEIGHT = settings.maxHeight;
+  let w = img.width, h = img.height;
+  // decide the width
+  if (MAX_WIDTH > 0 && w > MAX_WIDTH) {
+    h = MAX_WIDTH / w * h;
+    w = MAX_WIDTH;
+  }
+  // decide the height
+  if (MAX_HEIGHT > 0 && h > MAX_HEIGHT) {
+    w = MAX_HEIGHT / h * w;
+    h = MAX_HEIGHT;
+  }
+  return compress(img, w, h, settings.quality);
 }
 
 /**
@@ -78,7 +76,7 @@ export function compress(img: HTMLImageElement, width: number, height: number, q
  * @param src image url
  */
 export function createImage(src: string) {
-   // @ts-ignore
+  // @ts-ignore
   return new Promise<HTMLImageElement>((resolve, reject) => {
     const img = document.createElement('img');
     img.onload = () => { resolve(img) };

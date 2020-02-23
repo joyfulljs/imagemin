@@ -1,31 +1,39 @@
+/**
+ * @joyfulljs/imagemin v1.0.0
+ * (c) 2014-2020 by elvin zhu
+ * Released under the MIT License.
+ */
+
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
 /// <reference path="./index.d.ts" />
 /**
  * Compress image file while preserving the aspect ratio.
  * @param file A single File obtained by input[type=file]
  * @param settings Settings { maxWidth: number, maxHeight: number, quality: number }
  */
-export function compressWithRatio(file, settings) {
-    return readFile(file).then(createImage).then(img => {
-        const MAX_WIDTH = settings.maxWidth, MAX_HEIGHT = settings.maxHeight;
-        let w = img.width, h = img.height;
-        // 调整宽度
-        if (MAX_WIDTH > 0 && w > MAX_WIDTH) {
-            h = MAX_WIDTH / w * h;
-            w = MAX_WIDTH;
-        }
-        // 调整高度
-        if (MAX_HEIGHT > 0 && h > MAX_HEIGHT) {
-            w = MAX_HEIGHT / h * w;
-            h = MAX_HEIGHT;
-        }
-        return compress(img, w, h, settings.quality);
-    });
+function compressWithRatio(img, settings) {
+    const MAX_WIDTH = settings.maxWidth, MAX_HEIGHT = settings.maxHeight;
+    let w = img.width, h = img.height;
+    // decide the width
+    if (MAX_WIDTH > 0 && w > MAX_WIDTH) {
+        h = MAX_WIDTH / w * h;
+        w = MAX_WIDTH;
+    }
+    // decide the height
+    if (MAX_HEIGHT > 0 && h > MAX_HEIGHT) {
+        w = MAX_HEIGHT / h * w;
+        h = MAX_HEIGHT;
+    }
+    return compress(img, w, h, settings.quality);
 }
 /**
  * Read base64 content from a File object
  * @param file A single file obtained by input[type=file]
  */
-export function readFile(file) {
+function readFile(file) {
     // @ts-ignore
     return new Promise((resolve, reject) => {
         const fileReader = new FileReader();
@@ -41,7 +49,7 @@ export function readFile(file) {
  * @param dataUrl base64 image
  * @param filename file name
  */
-export function dataURLtoFile(dataUrl, filename) {
+function dataURLtoFile(dataUrl, filename) {
     let arr = dataUrl.split(','), mime = arr[0].match(/:(.*?);/)[1], bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
     while (n--) {
         u8arr[n] = bstr.charCodeAt(n);
@@ -55,7 +63,7 @@ export function dataURLtoFile(dataUrl, filename) {
  * @param height height
  * @param quality quality(0~1)
  */
-export function compress(img, width, height, quality) {
+function compress(img, width, height, quality) {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext('2d');
     canvas.width = width;
@@ -67,7 +75,7 @@ export function compress(img, width, height, quality) {
  * Create a HTMLImageElement
  * @param src image url
  */
-export function createImage(src) {
+function createImage(src) {
     // @ts-ignore
     return new Promise((resolve, reject) => {
         const img = document.createElement('img');
@@ -76,3 +84,9 @@ export function createImage(src) {
         img.src = src;
     });
 }
+
+exports.compress = compress;
+exports.compressWithRatio = compressWithRatio;
+exports.createImage = createImage;
+exports.dataURLtoFile = dataURLtoFile;
+exports.readFile = readFile;
