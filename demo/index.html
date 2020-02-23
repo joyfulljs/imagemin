@@ -4,11 +4,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Imagemin demo</title>
+  <script src="../dist/imagemin.min.js"></script>
 </head>
 
 <body>
-
+  <p>
+    <input id="file" type="file" accept="image/*" />
+  </p>
+  <p>Compressed</p>
+  <img id="img" />
+  <p>Origin image</p>
+  <img id="imgOrigin" />
+  <script>
+    file.onchange = handleChange;
+    function handleChange(e) {
+      Imagemin.readFile(e.target.files[0]).then(dataUrl => {
+        imgOrigin.onload = function () {
+          img.src = Imagemin.compressWithRatio(this, { maxWidth: 200 })
+        }
+        imgOrigin.src = dataUrl;
+      })
+    }
+  </script>
 </body>
 
 </html>
