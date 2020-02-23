@@ -2,7 +2,7 @@
 
 /**
  * Compress image file while preserving the aspect ratio.
- * @param file A single File obtained by input[type=file]
+ * @param img img element
  * @param settings Settings { maxWidth: number, maxHeight: number, quality: number }
  */
 export function compressWithRatio(img: HTMLImageElement, settings: Settings) {
