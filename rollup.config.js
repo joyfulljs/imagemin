@@ -8,23 +8,23 @@ Released under the MIT License.`
 
 export default [{
   input: 'dist/index.js',
-  plugins: [
-    banner(BannerStr),
-  ],
   output: [{
     file: 'dist/imagemin.min.js',
     format: 'umd',
     name: 'Imagemin',
-    plugins: [terser({
-      output: {
-        comments: function (node, comment) {
-          const { value, type } = comment;
-          if (type == "comment2") {
-            return /license/i.test(value);
+    plugins: [
+      terser({
+        output: {
+          comments: function (node, comment) {
+            const { value, type } = comment;
+            if (type == "comment2") {
+              return /license/i.test(value);
+            }
           }
         }
-      }
-    })]
+      }),
+      banner(BannerStr)
+    ]
   }, {
     file: 'dist/index.js',
     format: 'cjs'

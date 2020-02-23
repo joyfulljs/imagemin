@@ -1,9 +1,3 @@
-/**
- * @joyfulljs/imagemin v1.0.0
- * (c) 2014-2020 by elvin zhu
- * Released under the MIT License.
- */
-
 /// <reference path="./index.d.ts" />
 /**
  * Compress image file while preserving the aspect ratio.

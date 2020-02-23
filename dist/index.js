@@ -1,9 +1,3 @@
-/**
- * @joyfulljs/imagemin v1.0.0
- * (c) 2014-2020 by elvin zhu
- * Released under the MIT License.
- */
-
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
