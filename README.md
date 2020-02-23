@@ -1,4 +1,4 @@
-# compress image with aspect ratio or not
+# resize/compress image with aspect ratio or not
 
 # API
 - **createImage(src: string): Promise\<HTMLImageElement\>**  
@@ -9,17 +9,17 @@
  *Read base64 content from a File object*  
  *@param file A single file obtained by input[type=file]*  
  
-- **compress(img: HTMLImageElement, width: number, height: number, quality?: number): string**  
+- **compress(img: HTMLImageElement, width: number, height: number, options: IOptions): string**  
  *Compress file to specified width & height*  
  *@param img img element*  
  *@param width width*  
  *@param height height*  
- *@param quality quality(0~1)*
+ *@param options options { quality?: number, mineType?: string = 'image/png' }*
 
-- **compressWithRatio(img: HTMLImageElement, settings: Settings): string**  
+- **compressWithRatio(img: HTMLImageElement, settings: ISettings): string**  
  *Compress image file while preserving the aspect ratio.*  
  *@param img img element*  
- *@param settings Settings { maxWidth?: number, maxHeight?: number, quality?: number }*
+ *@param settings Settings { maxWidth?: number, maxHeight?: number, quality?: number, mineType?: string = 'image/png' }*
 
 - **dataURLtoFile(dataUrl: string, filename: string): File**  
  *Convert base64 image to File object*  

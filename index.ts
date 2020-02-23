@@ -5,7 +5,7 @@
  * @param img img element
  * @param settings Settings { maxWidth: number, maxHeight: number, quality: number }
  */
-export function compressWithRatio(img: HTMLImageElement, settings: Settings) {
+export function compressWithRatio(img: HTMLImageElement, settings: ISettings) {
   const MAX_WIDTH = settings.maxWidth,
     MAX_HEIGHT = settings.maxHeight;
   let w = img.width, h = img.height;
@@ -19,7 +19,7 @@ export function compressWithRatio(img: HTMLImageElement, settings: Settings) {
     w = MAX_HEIGHT / h * w;
     h = MAX_HEIGHT;
   }
-  return compress(img, w, h, settings.quality);
+  return compress(img, w, h, settings);
 }
 
 /**
@@ -56,19 +56,20 @@ export function dataURLtoFile(dataUrl: string, filename: string) {
 }
 
 /**
- * Compress file to specified width & height
+ * Compress file to specified width & height width: number, height: number, quality?: number
  * @param img img element
  * @param width width
  * @param height height
- * @param quality quality(0~1)
+ * @param options options { quality?: number, mineType?: string = 'image/png' }
  */
-export function compress(img: HTMLImageElement, width: number, height: number, quality?: number) {
+export function compress(img: HTMLImageElement, width: number, height: number, options: IOptions) {
+  const { quality, mineType } = options || {};
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext('2d');
   canvas.width = width;
   canvas.height = height;
   ctx.drawImage(img, 0, 0, width, height);
-  return canvas.toDataURL("image/jpeg", quality || 1);
+  return canvas.toDataURL(mineType || 'image/png', quality || 1);
 }
 
 /**

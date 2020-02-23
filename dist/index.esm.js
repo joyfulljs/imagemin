@@ -1,7 +1,7 @@
 /// <reference path="./index.d.ts" />
 /**
  * Compress image file while preserving the aspect ratio.
- * @param file A single File obtained by input[type=file]
+ * @param img img element
  * @param settings Settings { maxWidth: number, maxHeight: number, quality: number }
  */
 function compressWithRatio(img, settings) {
@@ -17,7 +17,7 @@ function compressWithRatio(img, settings) {
         w = MAX_HEIGHT / h * w;
         h = MAX_HEIGHT;
     }
-    return compress(img, w, h, settings.quality);
+    return compress(img, w, h, settings);
 }
 /**
  * Read base64 content from a File object
@@ -47,19 +47,20 @@ function dataURLtoFile(dataUrl, filename) {
     return new File([u8arr], filename, { type: mime });
 }
 /**
- * Compress file to specified width & height
+ * Compress file to specified width & height width: number, height: number, quality?: number
  * @param img img element
  * @param width width
  * @param height height
- * @param quality quality(0~1)
+ * @param options options { quality?: number, mineType?: string = 'image/png' }
  */
-function compress(img, width, height, quality) {
+function compress(img, width, height, options) {
+    const { quality, mineType } = options || {};
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext('2d');
     canvas.width = width;
     canvas.height = height;
     ctx.drawImage(img, 0, 0, width, height);
-    return canvas.toDataURL("image/jpeg", quality || 1);
+    return canvas.toDataURL(mineType || 'image/png', quality || 1);
 }
 /**
  * Create a HTMLImageElement
