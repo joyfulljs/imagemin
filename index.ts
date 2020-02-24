@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts" />
+import { ISettings, IOptions } from './index.d';
 
 /**
  * Compress image file while preserving the aspect ratio.

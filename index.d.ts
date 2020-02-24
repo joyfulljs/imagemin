@@ -1,4 +1,4 @@
-interface IOptions {
+export interface IOptions {
   /**
    * image quality(0~1)
    */
@@ -9,7 +9,13 @@ interface IOptions {
   mineType?: string
 }
 
-interface ISettings extends IOptions {
+export interface ISettings extends IOptions {
+  /**
+   * the max width when resize
+   */
   maxWidth?: number;
+  /**
+   * the max height when resize
+   */
   maxHeight?: number;
 }

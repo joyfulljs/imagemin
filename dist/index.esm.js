@@ -1,4 +1,3 @@
-/// <reference path="./index.d.ts" />
 /**
  * Compress image file while preserving the aspect ratio.
  * @param img img element
