@@ -1,5 +1,3 @@
-import { ISettings, IOptions } from './index.d';
-
 /**
  * Compress image file while preserving the aspect ratio.
  * @param img img element
@@ -84,4 +82,25 @@ export function createImage(src: string) {
     img.onerror = reject;
     img.src = src;
   })
+}
+
+export interface IOptions {
+  /**
+   * image quality(0~1)
+   */
+  quality?: number;
+  /**
+   * output MINE type. default to image/png
+   */
+  mineType?: string;
+}
+export interface ISettings extends IOptions {
+  /**
+   * the max width when resize
+   */
+  maxWidth?: number;
+  /**
+   * the max height when resize
+   */
+  maxHeight?: number;
 }
