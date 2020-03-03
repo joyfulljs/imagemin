@@ -1,4 +1,4 @@
-# resize/compress image with aspect ratio or not
+# read file, resize/compress image with or without aspect ratio
 
 # API
 - **createImage(src: string): Promise\<HTMLImageElement\>**  

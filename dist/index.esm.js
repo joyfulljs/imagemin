@@ -46,7 +46,7 @@ function dataURLtoFile(dataUrl, filename) {
     return new File([u8arr], filename, { type: mime });
 }
 /**
- * Compress file to specified width & height width: number, height: number, quality?: number
+ * Compress file to specified width & height
  * @param img img element
  * @param width width
  * @param height height

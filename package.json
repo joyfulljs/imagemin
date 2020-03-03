@@ -1,7 +1,7 @@
 {
   "name": "@joyfulljs/imagemin",
   "version": "1.0.2",
-  "description": "read file & compress image",
+  "description": "read file, resize/compress image with or without aspect ratio",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "scripts": {
