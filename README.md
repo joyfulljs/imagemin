@@ -1,9 +1,32 @@
 # read file, resize/compress image with or without aspect ratio
 
-[![Build Status](https://travis-ci.org/joyfulljs/draggable.svg?branch=master)](https://travis-ci.org/joyfulljs/draggable)
-[![codecov](https://codecov.io/gh/joyfulljs/draggable/branch/master/graph/badge.svg)](https://codecov.io/gh/joyfulljs/draggable)
+[![Build Status](https://travis-ci.org/joyfulljs/imagemin.svg?branch=master)](https://travis-ci.org/joyfulljs/imagemin)
+[![codecov](https://codecov.io/gh/joyfulljs/imagemin/branch/master/graph/badge.svg)](https://codecov.io/gh/joyfulljs/imagemin)
 
-# API
+# usage
+
+```JS
+import { compressWithRatio, readFile, compress, createImage } from '@joyfulljs/imagemin';
+
+// compress from a url
+createImage('http://yourhost.com/your/img/path/xx.jpg')
+.then(img=>{
+  return compress(img, 80, 80)
+}).then(dataUrl=>{
+  console.log(dataUrl)
+});
+
+// compress file from input[type=file]
+readFile(fileInput.files[0])
+.then(createImage)
+.then(img=>{
+  return compressWithRatio(img, { maxWidth: 800 })
+}).then(dataUrl=>{
+  console.log(dataUrl)
+});
+```
+
+# api
 
 - **createImage(src: string): Promise\<HTMLImageElement\>**  
   _Create a HTMLImageElement_  
@@ -30,29 +53,6 @@
   _@param dataUrl base64 image_  
   _@param filename file name_
 
-# DEMO
+# licence
 
-```JS
-import { compressWithRatio, readFile, compress, createImage } from '@joyfulljs/imagemin';
-
-// compress from a url
-createImage('http://yourhost.com/your/img/path/xx.jpg')
-.then(img=>{
-  return compress(img, 80, 80)
-}).then(dataUrl=>{
-  console.log(dataUrl)
-});
-
-// compress file from input[type=file]
-readFile(fileInput.files[0])
-.then(createImage)
-.then(img=>{
-  return compressWithRatio(img, { maxWidth: 800 })
-}).then(dataUrl=>{
-  console.log(dataUrl)
-});
-```
-
-# LICENSE
-
-MIT
+MIT[@elvinzhu](https://github.com/elvinzhu)
