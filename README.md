@@ -1,30 +1,34 @@
 # read file, resize/compress image with or without aspect ratio
 
+[![Build Status](https://travis-ci.org/joyfulljs/draggable.svg?branch=master)](https://travis-ci.org/joyfulljs/draggable)
+[![codecov](https://codecov.io/gh/joyfulljs/draggable/branch/master/graph/badge.svg)](https://codecov.io/gh/joyfulljs/draggable)
+
 # API
+
 - **createImage(src: string): Promise\<HTMLImageElement\>**  
-  *Create a HTMLImageElement*  
-  *@param src image url*  
+  _Create a HTMLImageElement_  
+  _@param src image url_
 
 - **readFile(file: File): Promise\<string\>**  
- *Read base64 content from a File object*  
- *@param file A single file obtained by input[type=file]*  
- 
+  _Read base64 content from a File object_  
+  _@param file A single file obtained by input[type=file]_
+
 - **compress(img: HTMLImageElement, width: number, height: number, options: IOptions): string**  
- *Compress file to specified width & height*  
- *@param img img element*  
- *@param width width*  
- *@param height height*  
- *@param options options { quality?: number, mineType?: string = 'image/png' }*
+  _Compress file to specified width & height_  
+  _@param img img element_  
+  _@param width width_  
+  _@param height height_  
+  _@param options options { quality?: number, mineType?: string = 'image/png' }_
 
 - **compressWithRatio(img: HTMLImageElement, settings: ISettings): string**  
- *Compress image file while preserving the aspect ratio.*  
- *@param img img element*  
- *@param settings Settings { maxWidth?: number, maxHeight?: number, quality?: number, mineType?: string = 'image/png' }*
+  _Compress image file while preserving the aspect ratio._  
+  _@param img img element_  
+  _@param settings Settings { maxWidth?: number, maxHeight?: number, quality?: number, mineType?: string = 'image/png' }_
 
 - **dataURLtoFile(dataUrl: string, filename: string): File**  
- *Convert base64 image to File object*  
- *@param dataUrl base64 image*  
- *@param filename file name*
+  _Convert base64 image to File object_  
+  _@param dataUrl base64 image_  
+  _@param filename file name_
 
 # DEMO
 
